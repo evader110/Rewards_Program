@@ -10,7 +10,7 @@ import decimal
 def get_random_customer_name():
     name_number = randint(1, 4945)
     name = ''
-    with open('first_names.txt', 'r') as names:
+    with open('first_names.txt') as names:
         for i in range(name_number):
             name = names.readline()
     return name
@@ -41,5 +41,3 @@ def generate_transactions(t, n):
 def generate_database(t, n):
     create_customers(n)
     generate_transactions(t, n)
-
-generate_database(100, 10)

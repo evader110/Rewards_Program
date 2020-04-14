@@ -15,11 +15,10 @@ class Customer:
 
     # Transaction -> [CID, Date, Purchase]
     # Points are calculated by 2 for each dollar above $100 and 1 for each dollar above 50
-    def calculate_points(self, data):
-        for transaction in data:
-            self.reward_points += 2 * max(int(transaction[2] - 100), 0) + min(max(int(transaction[2] - 50), 0), 50)
+    def add_points(self, amount):
+        self.reward_points += 2 * max(int(amount - 100), 0) + min(max(int(amount - 50), 0), 50)
 
-data = [[1, '1/11/2020', 253.23], [1, '2/3/2020', 57.00]]
-ethan = Customer(1,'Ethan')
-ethan.calculate_points(data)
-print(ethan)
+# data = [[1, '1/11/2020', 253.23], [1, '2/3/2020', 57.00]]
+# ethan = Customer(1,'Ethan')
+# ethan.calculate_points(data)
+# print(ethan)
