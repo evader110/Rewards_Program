@@ -2,29 +2,25 @@
 # Created by Ethan O'Dell
 # Email: eodellm@gmail.com
 
-from classes.customer import Customer
+from .customer import Customer
 from random import randint, randrange
 import decimal
 
 
 def get_random_customer_name():
-    name_number = randint(1, 4945)
-    name = ''
     with open('first_names.txt') as names:
-        for i in range(name_number):
-            name = names.readline()
-    return name
+        return names.read().split('\n')[randint(0, 4944)].strip()
 
 # Generate list of n customers
-def create_customers(n):
+def generate_customers(n):
     with open('customer_list', 'w') as customers:
         for i in range(1,n+1):
-            customers.write('%d, %s' % (i, get_random_customer_name()))
+            customers.write('%d, %s\n' % (i, get_random_customer_name()))
 
 # Generate list of t transactions for n customers
 def generate_transactions(t, n):
-    with open('transactions.txt', 'w') as transactions:
-        for i in range(t+1):
+    with open('transactions', 'w') as transactions:
+        for _ in range(1, t+1):
             cid = randint(1,n)
             # Data should come from the last three months ie. Jan-Mar
             month = randint(1,3)
@@ -39,5 +35,5 @@ def generate_transactions(t, n):
             transactions.write('%d, %s, %f\n' % (cid, date, purchase_amount))
 
 def generate_database(t, n):
-    create_customers(n)
+    generate_customers(n)
     generate_transactions(t, n)
