@@ -1,5 +1,5 @@
 # Rewards_Program
-A repo for awarding points based on recorded purchases.
+A repo for awarding points based on recorded purchases. Builds are tested weekly using Travis CI. Current build is passing.
 
 # Current Code Coverage Report:
 | Name                            | Stmts | Miss | Cover |
